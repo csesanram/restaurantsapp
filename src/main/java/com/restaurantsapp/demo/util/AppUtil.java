@@ -129,7 +129,10 @@ public class AppUtil {
 		String findValue = "\\bcat\\b";
 		regXvalue(inputValue, findValue);
 		
+		OuterClass outClassObj = new OuterClass();
 		
+		outClassObj.displayInnnerClass();
+				
 	}
 
 	public static String manipulateStr(String str) {
