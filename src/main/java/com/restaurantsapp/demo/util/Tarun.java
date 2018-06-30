@@ -74,9 +74,11 @@ public class Tarun {
 	 * Check If User Exists In The ArrayList
 	 */
 	private static String checkCustomer(String customer) {
+		
 		for(CustomerInformation c : customerListArray) {
-			if(c.getFirstName().toLowerCase().equals(customer))
+			if(c.getFirstName().toLowerCase().equals(customer.toLowerCase())) {
 				return "Customer '" + customer + "' Found In The List";
+			}
 		}
 		return "Customer '" + customer + "' Not Found";
 	}
@@ -88,28 +90,29 @@ public class Tarun {
 		
 		Scanner ai = new Scanner(System.in);
 		while(true) {
-			System.out.println("First Name");
-		 	String fname = ai.nextLine();
-			System.out.println("Last Name");
-			String lname = ai.nextLine();
-			System.out.println("Phone #");
-			String phone = ai.nextLine();
-			System.out.println("E-Mail");
-			String email = ai.nextLine();
-			System.out.println("Address");
-			String addr = ai.nextLine();
+			System.out.print("First Name: ");
+		 	String fname = ai.next();
+			System.out.print("Last Name: ");
+			String lname = ai.next();
+			System.out.print("Phone #: ");
+			long phone = ai.nextLong();
+			System.out.print("E-Mail: ");
+			String email = ai.next();
+			System.out.print("Address: ");
+			String addr = ai.next();
+			ai.nextLine();
 			
 			CustomerInformation customer = new CustomerInformation();
 			customer.setFirstName(fname);
 			customer.setLastName(lname);
-			customer.setPhoneNo(Integer.parseInt(phone));
+			customer.setPhoneNo(phone);
 			customer.setEmailId(email);
 			customer.setAddress(addr);
 			customerListArray.add(customer);
 			
-			System.out.println("Enter 'C' To Add More Or 'Q' To Quit : ");
-			String corq = ai.nextLine();
-			if(corq.toLowerCase().equals("q")) {
+			System.out.print("Enter 'C' To Add More Or 'Q' To Quit : ");
+			String check = ai.next();
+			if(check.toLowerCase().equals("q")) {
 				break;
 			}
 		}

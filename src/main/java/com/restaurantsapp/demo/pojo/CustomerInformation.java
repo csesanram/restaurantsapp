@@ -11,7 +11,7 @@ public class CustomerInformation {
 	
 	private String firstName;
 	private String lastName;
-	private int phoneNo;
+	private long phoneNo;
 	private String emailId;
 	private String address;
 	private String ssn;
@@ -43,13 +43,13 @@ public class CustomerInformation {
 	/**
 	 * @return the phoneNo
 	 */
-	public int getPhoneNo() {
+	public long getPhoneNo() {
 		return phoneNo;
 	}
 	/**
 	 * @param phoneNo the phoneNo to set
 	 */
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 	/**
