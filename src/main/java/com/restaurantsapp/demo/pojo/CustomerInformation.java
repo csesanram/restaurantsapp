@@ -11,10 +11,11 @@ public class CustomerInformation {
 	
 	private String firstName;
 	private String lastName;
-	private long phoneNo;
+	private String phoneNo;
 	private String emailId;
 	private String address;
 	private String ssn;
+	private int customerId;
 	
 	/**
 	 * @return the firstName
@@ -43,13 +44,13 @@ public class CustomerInformation {
 	/**
 	 * @return the phoneNo
 	 */
-	public long getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 	/**
 	 * @param phoneNo the phoneNo to set
 	 */
-	public void setPhoneNo(long phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 	/**
@@ -93,6 +94,12 @@ public class CustomerInformation {
 	public String toString() {
 		return "CustomerInformation [firstName=" + firstName + ", lastName=" + lastName + ", phoneNo=" + phoneNo
 				+ ", emailId=" + emailId + ", address=" + address + ", ssn=" + ssn + "]";
+	}
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	
 	

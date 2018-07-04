@@ -148,7 +148,7 @@ public class AppUtil {
 	public static Boolean customerInformationValidation(CustomerInformation customerInformation) {
 
 		Boolean isValidationSuccess = Boolean.TRUE;
-		if (customerInformation.getPhoneNo() == 0) {
+		if (customerInformation.getPhoneNo() == "0") {
 			System.out.println("I am failing beacuse phone no is zero");
 			isValidationSuccess = Boolean.FALSE;
 		} else if (customerInformation.getFirstName() == null || "".equals(customerInformation.getFirstName())) {

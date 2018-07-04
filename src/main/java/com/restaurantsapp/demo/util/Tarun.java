@@ -1,13 +1,19 @@
 package com.restaurantsapp.demo.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 import com.restaurantsapp.demo.pojo.CustomerInformation;
+import com.restaurantsapp.demo.pojo.Offer;
+import com.restaurantsapp.demo.pojo.Transaction;
+import com.restaurantsapp.demo.pojo.Offer.Day;
 
+@SuppressWarnings("unused")
 public class Tarun {
 	static ArrayList<CustomerInformation> customerListArray = new ArrayList<>();
+	static HashMap<Transaction, CustomerInformation> customerTransactions = new HashMap<>();
 	static LinkedList<CustomerInformation> customerListLinked = new LinkedList<>();
 	
 	public static void main(String[] args) {
@@ -15,36 +21,70 @@ public class Tarun {
 		CustomerInformation customerA = new CustomerInformation();
 		CustomerInformation customerB = new CustomerInformation();
 		
-		//Add Customers To ArrayList
-		addCustomers();
-		
-		//Print ArrayList Customers
-		printCustomers(customerListArray);
-		
-		// Check If Customer Exists In The ArrayList
-		System.out.println(checkCustomer("Raj"));
-		
-		// Convert ArrayList Customers to LinkedList
-		convertToLinked();
-		System.out.println("ArrayList Converted to LinkedList");
-		
-		// Linked List addFirst
+		//Customer A Information
 		customerA.setFirstName("Joe");
 		customerA.setLastName("Doe");
-		customerA.setPhoneNo(1234);
+		customerA.setPhoneNo("850-431-4919");
 		customerA.setEmailId("joe.deo@ymail.com");
 		customerA.setAddress("27 York Street");
-		customerListLinked.addFirst(customerA);
-		System.out.println("Added Customer To First Link");
+		customerA.setCustomerId(5454);
 		
-		// Linked List addLast
+		//Customer B Information
 		customerB.setFirstName("Salman");
 		customerB.setLastName("Salmon");
-		customerB.setPhoneNo(4314);
+		customerB.setPhoneNo("749-871-3124");
 		customerB.setEmailId("salman.salmon@ymail.com");
 		customerB.setAddress("32 New Street");
-		customerListLinked.addLast(customerB);
-		System.out.println("Added Customer To Last Link");
+		customerB.setCustomerId(8692);
+	
+		//Offer Instantiation
+		Offer ofOne = new Offer();
+		Offer ofTwo = new Offer();
+		
+		//Transaction Instantiation
+		Transaction transOne = new Transaction();
+		transOne.setId(123);
+		transOne.setTotal(10, 5);
+		transOne.setCi(customerA);
+		ofOne.setTransInformation(transOne);
+		ofOne.setApplyOffer(Day.Sunday);
+		transOne.setTotalAfterCoupon(ofOne.getAfterApplyOffer());
+	
+		Transaction transTwo = new Transaction();
+		transTwo.setId(234);
+		transTwo.setTotal(13, 3);
+		transTwo.setCi(customerB);
+		ofTwo.setTransInformation(transTwo);
+		ofTwo.setApplyOffer(Day.Monday);
+		transTwo.setTotalAfterCoupon(ofTwo.getAfterApplyOffer());
+		
+		// HashMap<Transaction, CustomerInformation>
+		customerTransactions.put(transOne, customerA);
+		customerTransactions.put(transTwo, customerB);
+		
+		//Print Transactions HashMap
+		printTransactions();
+		
+//		//Add Customers To ArrayList
+//		addCustomers();
+//		
+//		//Print ArrayList Customers
+//		printCustomers(customerListArray);
+//		
+//		// Check If Customer Exists In The ArrayList
+//		System.out.println(checkCustomer("Raj"));
+//		
+//		// Convert ArrayList Customers to LinkedList
+//		convertToLinked();
+//		System.out.println("ArrayList Converted to LinkedList");
+//		
+//		// Linked List addFirst
+//		customerListLinked.addFirst(customerA);
+//		System.out.println("Added Customer To First Link");
+//		
+//		// Linked List addLast
+//		customerListLinked.addLast(customerB);
+//		System.out.println("Added Customer To Last Link");
 		
 //		//Override
 //		MultisA parentOverride = new MultisA();
@@ -60,6 +100,25 @@ public class Tarun {
 	}
 	
 	/**
+	 * Print Customer Transactions Using Transaction Key
+	 */
+	private static void printTransactions() {
+		System.out.println("Customer Transactions");
+		System.out.println("=====================");
+		
+		for(Transaction key : customerTransactions.keySet()) {
+			CustomerInformation temp = customerTransactions.get(key);
+			System.out.println("Customer Id: "+temp.getCustomerId());
+			System.out.println("Transaction Id: "+key.getId());
+			System.out.println("Name : "+temp.getFirstName());
+			System.out.println("Amount : $"+key.getTotal());
+			System.out.println("Discount : $"+(key.getTotal()-key.getTotatlAfterCoupon()));
+			System.out.println("Total Amount : $"+key.getTotatlAfterCoupon());
+			System.out.println("---------------------------------------------------------");
+		}
+	}
+
+	/**
 	 * Convert Customers From ArrayList to LinkedList
 	 */
 	private static void convertToLinked() {
@@ -71,7 +130,7 @@ public class Tarun {
 	/**
 	 * @param Customer Name
 	 * @return String - Found/Not Found
-	 * Check If User Exists In The ArrayList
+	 * Check If Customer Exists In The ArrayList
 	 */
 	private static String checkCustomer(String customer) {
 		
@@ -95,7 +154,7 @@ public class Tarun {
 			System.out.print("Last Name: ");
 			String lname = ai.next();
 			System.out.print("Phone #: ");
-			long phone = ai.nextLong();
+			String phone = ai.next();
 			System.out.print("E-Mail: ");
 			String email = ai.next();
 			System.out.print("Address: ");
