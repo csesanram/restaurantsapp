@@ -103,13 +103,14 @@ public class Tarun {
 	 * Print Customer Transactions Using Transaction Key
 	 */
 	private static void printTransactions() {
+		
 		System.out.println("Customer Transactions");
 		System.out.println("=====================");
 		
 		for(Transaction key : customerTransactions.keySet()) {
 			CustomerInformation temp = customerTransactions.get(key);
-			System.out.println("Customer Id: "+temp.getCustomerId());
 			System.out.println("Transaction Id: "+key.getId());
+			System.out.println("Customer Id: "+temp.getCustomerId());
 			System.out.println("Name : "+temp.getFirstName());
 			System.out.println("Amount : $"+key.getTotal());
 			System.out.println("Discount : $"+(key.getTotal()-key.getTotatlAfterCoupon()));
@@ -122,6 +123,7 @@ public class Tarun {
 	 * Convert Customers From ArrayList to LinkedList
 	 */
 	private static void convertToLinked() {
+		
 		for(CustomerInformation c : customerListArray) {
 			customerListLinked.add(c);
 		}
@@ -183,6 +185,7 @@ public class Tarun {
 	 * Prints All The Customers In The ArrayList
 	 */
 	private static void printCustomers(ArrayList<CustomerInformation> customerList) {
+		
 		if(customerList.isEmpty()) 
 			System.out.println("Customer List Is Empty");
 		else {
