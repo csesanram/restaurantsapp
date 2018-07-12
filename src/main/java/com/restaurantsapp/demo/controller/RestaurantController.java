@@ -18,7 +18,8 @@ import com.restaurantsapp.demo.util.SampleCustomers;
 @RequestMapping("/restaurants")
 public class RestaurantController {
 	static ArrayList<CustomerInformation> ci = new ArrayList<>();
-
+	SampleCustomers sc = new SampleCustomers();
+	
 	@RequestMapping(value= "/fetchcustomerinformation", method= RequestMethod.GET, produces ="application/json")
 	public ArrayList<CustomerInformation> fetchCustomerInformation() {
 		return ci;
@@ -28,14 +29,9 @@ public class RestaurantController {
 	public Transaction fetchTransaction() {
 		Transaction trans = new Transaction();
 		trans.setId(1001);
-		CustomerInformation  c = new CustomerInformation();
-		c.setFirstName("Sankar");
-		c.setLastName("k");
-		c.setAddress("Atlanta");
-		c.setEmailId("c@gmail.com");
-		c.setCustomerId(1001);
-		c.setPhoneNo("717-829-3232");
-		trans.setCi(c);
+		
+		CustomerInformation customer = sc.getSamplesArray().get(0);
+		trans.setCi(customer);
 		trans.setTotal(100, 1);
 		return trans;
 	}
@@ -43,9 +39,7 @@ public class RestaurantController {
 	@RequestMapping(value = "/savecustomerinformation", method = RequestMethod.POST, produces = "application/json")
 	public ArrayList<CustomerInformation> saveCustomerInformation() {
 		
-		SampleCustomers sc = new SampleCustomers();
 		ci = sc.getSamplesArray();
-		
 		return ci;
 	}
 	

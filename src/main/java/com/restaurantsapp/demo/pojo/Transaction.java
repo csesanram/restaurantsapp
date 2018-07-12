@@ -32,10 +32,13 @@ public class Transaction {
 	}
 	
 	public void setTotalAfterCoupon(int totalAmount) {
-		this.totalAmount = totalAmount;
+			this.totalAmount = totalAmount;
 	}
 	
-	public int getTotatlAfterCoupon() {
+	public int getTotalAfterCoupon() {
+		if(this.totalAmount == 0) {
+			return getTotal();
+		}
 		return totalAmount;
 	}
 

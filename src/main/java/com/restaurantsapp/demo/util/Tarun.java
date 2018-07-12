@@ -23,7 +23,6 @@ public class Tarun {
 		CustomerInformation customerA = sc.getSamplesArray().get(0);
 		CustomerInformation customerB = sc.getSamplesArray().get(1);
 
-	
 		//Offer Instantiation
 		Offer ofOne = new Offer();
 		Offer ofTwo = new Offer();
@@ -100,8 +99,8 @@ public class Tarun {
 			System.out.println("Customer Id: "+temp.getCustomerId());
 			System.out.println("Name : "+temp.getFirstName());
 			System.out.println("Amount : $"+key.getTotal());
-			System.out.println("Discount : $"+(key.getTotal()-key.getTotatlAfterCoupon()));
-			System.out.println("Total Amount : $"+key.getTotatlAfterCoupon());
+			System.out.println("Discount : $"+(key.getTotal()-key.getTotalAfterCoupon()));
+			System.out.println("Total Amount : $"+key.getTotalAfterCoupon());
 			System.out.println("---------------------------------------------------------");
 		}
 	}
