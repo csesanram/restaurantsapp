@@ -18,24 +18,11 @@ public class Tarun {
 	
 	public static void main(String[] args) {
 		
-		CustomerInformation customerA = new CustomerInformation();
-		CustomerInformation customerB = new CustomerInformation();
+		SampleCustomers sc = new SampleCustomers();
 		
-		//Customer A Information
-		customerA.setFirstName("Joe");
-		customerA.setLastName("Doe");
-		customerA.setPhoneNo("850-431-4919");
-		customerA.setEmailId("joe.deo@ymail.com");
-		customerA.setAddress("27 York Street");
-		customerA.setCustomerId(5454);
-		
-		//Customer B Information
-		customerB.setFirstName("Salman");
-		customerB.setLastName("Salmon");
-		customerB.setPhoneNo("749-871-3124");
-		customerB.setEmailId("salman.salmon@ymail.com");
-		customerB.setAddress("32 New Street");
-		customerB.setCustomerId(8692);
+		CustomerInformation customerA = sc.getSamplesArray().get(0);
+		CustomerInformation customerB = sc.getSamplesArray().get(1);
+
 	
 		//Offer Instantiation
 		Offer ofOne = new Offer();
