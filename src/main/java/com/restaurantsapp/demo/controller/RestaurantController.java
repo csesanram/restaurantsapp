@@ -1,12 +1,16 @@
 package com.restaurantsapp.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurantsapp.demo.pojo.CustomerInformation;
+import com.restaurantsapp.demo.pojo.Status;
 import com.restaurantsapp.demo.pojo.Transaction;
 import com.restaurantsapp.demo.util.SampleCustomers;
 
@@ -37,10 +41,16 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/savecustomerinformation", method = RequestMethod.POST, produces = "application/json")
-	public ArrayList<CustomerInformation> saveCustomerInformation() {
+	public Status saveCustomerInformation(@RequestBody Map<String, String> customerInformation) {
+		// collecting input
+		System.out.println(customerInformation.get("firstName"));
 		
-		ci = sc.getSamplesArray();
-		return ci;
+		// below the part comes from services/business logic layer
+		Status s = new Status();
+		s.setStatusCode("200");
+		s.setStatusMessage("Successfully Saved Customer Information");
+		
+		return s;
 	}
 	
 }
