@@ -1,7 +1,6 @@
 package com.restaurantsapp.demo.controller;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,26 +39,12 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/savecustomerinformation", method = RequestMethod.POST, produces = "application/json")
-	public Status saveCustomerInformation(@RequestBody Map<String, String> customerInformation) {
+	public Status saveCustomerInformation(@RequestBody CustomerInformation ci) {
 		
-		// collecting input
-		System.out.println(customerInformation.get("firstName"));
-		System.out.println(customerInformation.get("lastName"));
-		System.out.println(customerInformation.get("phoneNo"));
-		System.out.println(customerInformation.get("emailId"));
-		System.out.println(customerInformation.get("address"));
-		System.out.println(customerInformation.get("customerId"));
-		
-		CustomerInformation ci = new CustomerInformation();
-		ci.setFirstName(customerInformation.get("firstName"));
-		ci.setLastName(customerInformation.get("lastName"));
-		ci.setPhoneNo(customerInformation.get("phoneNo"));
-		ci.setEmailId(customerInformation.get("emailId"));
-		ci.setAddress(customerInformation.get("address"));
-		ci.setCustomerId(Integer.parseInt(customerInformation.get("customerId")));
+		// collecting and printing input
+		System.out.println(ci);
 		
 		ciList.add(ci);
-		
 		
 		// below the part comes from services/business logic layer
 		Status s = new Status();
